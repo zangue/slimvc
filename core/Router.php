@@ -82,4 +82,16 @@ class Router {
 	
 	}
 
+	/**
+	 * Handle errors
+	 * @param  string $code error type, eg 400, 500
+	 * @return [type]       [description]
+	 */
+	public function error($code) {
+		$controller = new ErrorsController($this->app);
+		$method = 'error' . $code;
+
+		return call_user_func([$controller, $method]);
+	}
+
 }
