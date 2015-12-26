@@ -30,7 +30,7 @@ class BaseController {
 	private $viewData = null;
 
 
-	public function __construct($app, $modelClass) {
+	public function __construct($app, $modelClass = NULL) {
 
 		$this->app = $app;
 		$this->modelClass = $modelClass;

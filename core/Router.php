@@ -35,10 +35,9 @@ class Router {
 			$action = explode('@', $action);
 
 			$modelClass = $action[0] . 'Model';
-			$modelClassFile = ROOT . DS . APP_DIR . DS . 'model' . DS . $modelClass . '.php';
 			$model = NULL;
 
-			if (file_exists($modelClassFile))
+			if ($this->modelClassFileExist($modelClass))
 				$model = new $modelClass($this->app);
 
 			$controllerClass = $action[0] . 'Controller';
@@ -54,6 +53,17 @@ class Router {
 		})->via($method);
 	}
 
+	/**
+	 * cheks if model class file exists
+	 * @param  string $modelClass model class name
+	 * @return bool            true if model file exist, false otherwise
+	 */
+	private function modelClassFileExist($modelClass) {
+
+		$modelClassFile = ROOT . DS . APP_DIR . DS . 'Model' . DS . $modelClass . '.php';
+
+		return file_exists($modelClassFile);
+	}
 
 	/**
 	 * Routes http GET request
@@ -88,7 +98,12 @@ class Router {
 	 * @return [type]       [description]
 	 */
 	public function error($code) {
-		$controller = new ErrorsController($this->app);
+
+		$model = NULL;
+		if ($this->modelClassFileExist('Error'))
+				$model = new $modelClass($this->app);
+
+		$controller = new ErrorController($this->app, $model);
 		$method = 'error' . $code;
 
 		return call_user_func([$controller, $method]);

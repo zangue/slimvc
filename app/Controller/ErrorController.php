@@ -5,13 +5,13 @@
  * @author Zangue <armand.zangue@gmail.com>
  */
 
-class ErrorsController extends BaseController {
+class ErrorController extends BaseController {
 
 	/**
 	 * Controller name
 	 * @var string
 	 */
-	public $name = 'Errors';
+	public $name = 'Error';
 
 
 	public function error404() {
