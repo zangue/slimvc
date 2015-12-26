@@ -33,6 +33,9 @@ $app = new Slim([
 	'templates.path' => VIEW_ROOT
 ]);
 
+// Some more things can be done here. Eg, add a custom middleware
+// $app->add(new MyMiddleware());
+
 // Load configuration
 $app->configureMode($app->config('mode'), function () use ($app) {
 	$app->config = Config::load(APP_DIR . DS . "Config/{$app->mode}.php");
