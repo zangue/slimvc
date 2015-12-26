@@ -9,6 +9,15 @@
 
 $router = new Router($app);
 
+// Error handling
+$app->notFound(function () use ($router) {
+	$router->error('404');
+});
+
+$app->error(function () use ($router) {
+	$router->error('500');
+});
+
 $router->get('/', 'Hello@index');
 
 $router->get('/hello\/', 'Hello@hello');
