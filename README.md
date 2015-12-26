@@ -12,9 +12,10 @@ composer install
 ```
 
 ###Missing features
-* Autoloader: At the moment all the SliMVC classes needs to manually required
+* Autoloader: At the moment all the SliMVC classes needs to be manually required
 * Namespaces
 
 ###Notes
+This project is based on Slim v2.6.
 I will update this README with more infos and documentation as soon as I get some sparetime.
 
