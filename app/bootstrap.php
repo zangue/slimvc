@@ -20,9 +20,11 @@ require ROOT . DS . 'vendor/autoload.php';
 require ROOT . DS . CORE_DIR . DS . 'Router.php';
 
 require APP_DIR . DS . 'Controller/BaseController.php';
+require APP_DIR . DS . 'Controller/ErrorController.php';
 require APP_DIR . DS . 'Controller/HelloController.php';
 
 require APP_DIR . DS . 'Model/BaseModel.php';
+require APP_DIR . DS . 'Model/ErrorModel.php';
 require APP_DIR . DS . 'Model/HelloModel.php';
 
 // Instantiate a new Slim Application
