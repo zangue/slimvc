@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * core/Model/Model.php
+ *
+ * @author Zangue <armand.zangue@gmail.com>
+ */
+
+namespace \SliMVC;
+
+class Model {
+
+	/**
+	 * Slim application instance
+	 * @var Slim
+	 */
+	protected $app;
+
+
+	public function __construct($app) {
+
+		$this->app = $app;
+	}
+}
