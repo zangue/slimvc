@@ -1,11 +1,14 @@
 <?php
+
 /**
- * app/Controller/ErrorsController.php
+ * core/Controller/ErrorController.php
  *
  * @author Zangue <armand.zangue@gmail.com>
  */
 
-class ErrorController extends BaseController {
+
+class ErrorController extends Controller {
+
 
 	/**
 	 * Controller name
@@ -16,15 +19,14 @@ class ErrorController extends BaseController {
 
 	public function error404() {
 
-		$this->renderView($this->name, '404');
+		$this->renderer($this->name, '404');
 
 	}
 
 	public function error500() {
 
-		$this->renderView($this->name, '500');
+		$this->renderer($this->name, '500');
 
 	}
-
 
 }

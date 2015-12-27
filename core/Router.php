@@ -6,6 +6,7 @@
  * @author Zangue <armand.zangue@gmail.com>
  */
 
+
 class Router {
 
 	/**
@@ -35,9 +36,10 @@ class Router {
 			$action = explode('@', $action);
 
 			$modelClass = $action[0] . 'Model';
+			$modelClassFile = ROOT . DS . APP_DIR . DS . 'Model' . DS . $modelClass . '.php';
 			$model = NULL;
 
-			if ($this->modelClassFileExist($modelClass))
+			if (file_exists($modelClassFile))
 				$model = new $modelClass($this->app);
 
 			$controllerClass = $action[0] . 'Controller';
@@ -49,21 +51,10 @@ class Router {
 			call_user_func_array([$controller, $method], func_get_args());
 
 			// Render view
-			call_user_func_array([$controller, 'renderView'], [$action[0], $method]);
+			call_user_func_array([$controller, 'renderer'], [$action[0], $method]);
 		})->via($method);
 	}
 
-	/**
-	 * cheks if model class file exists
-	 * @param  string $modelClass model class name
-	 * @return bool            true if model file exist, false otherwise
-	 */
-	private function modelClassFileExist($modelClass) {
-
-		$modelClassFile = ROOT . DS . APP_DIR . DS . 'Model' . DS . $modelClass . '.php';
-
-		return file_exists($modelClassFile);
-	}
 
 	/**
 	 * Routes http GET request
@@ -100,7 +91,10 @@ class Router {
 	public function error($code) {
 
 		$model = NULL;
-		if ($this->modelClassFileExist('Error'))
+		$modelClass = 'ErrorModel';
+		$modelClassFile = ROOT . DS . CORE_DIR . DS . 'Model' . DS . 'ErrorModel.php';
+
+		if (file_exists($modelClassFile))
 				$model = new $modelClass($this->app);
 
 		$controller = new ErrorController($this->app, $model);

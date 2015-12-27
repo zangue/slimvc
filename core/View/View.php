@@ -1,16 +1,14 @@
 <?php
 
 /**
- * app/Controller/BaseController.php
+ * core/View/View.php
  *
  * @author Zangue <armand.zangue@gmail.com>
  */
 
 
-class BaseController {
+class View {
 
-	public $name = 'Base';
-	
 	/**
 	 * Slim application instance
 	 * @var Slim
@@ -18,10 +16,10 @@ class BaseController {
 	protected $app;
 
 	/**
-	 * Current model class
-	 * @var [type]
+	 * Layout file name
+	 * @var string
 	 */
-	protected $modelClass;
+	protected $layout;
 
 	/**
 	 * Data for the view
@@ -30,27 +28,20 @@ class BaseController {
 	private $viewData = null;
 
 
-	public function __construct($app, $modelClass = NULL) {
+	public function __construct($app, $viewData) {
 
 		$this->app = $app;
-		$this->modelClass = $modelClass;
+		$this->viewData = $viewData;
+		$this->layout = 'layout.html';
 	}
 
 
 	/**
-	 * Set data to be passed to the view
-	 * @param array $data data
+	 * Render view for specific action
+	 * @param  string $dir  directory name that contains the view files
+	 * @param  string $view view file
+	 * @return void
 	 */
-	protected function set($data = null) {
-
-		//var_dump($data);
-
-		if (isset($data))
-			$this->viewData = $data;
-
-	}
-
-
 	public function renderView($dir, $view) {
 
 		$templatePath = $this->app->config->get('app.settings.renderer.template_path');
@@ -73,8 +64,7 @@ class BaseController {
 		// Append data to view
 		$this->app->view->appendData(compact('app', 'content'));
 
-		$this->app->render('layout.html');
+		$this->app->render($this->layout);
 
 	}
-
 }

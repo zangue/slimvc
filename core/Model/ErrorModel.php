@@ -6,7 +6,8 @@
  * @author Zangue <armand.zangue@gmail.com>
  */
 
-class ErrorModel extends BaseModel {
+
+class ErrorModel extends Model {
 
 	public $name = 'Error';
 
