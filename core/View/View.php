@@ -6,7 +6,6 @@
  * @author Zangue <armand.zangue@gmail.com>
  */
 
-namespace \SliMVC;
 
 class View {
 
@@ -22,10 +21,17 @@ class View {
 	 */
 	protected $layout;
 
+	/**
+	 * Data for the view
+	 * @var [type]
+	 */
+	private $viewData = null;
 
-	public function __construct($app) {
+
+	public function __construct($app, $viewData) {
 
 		$this->app = $app;
+		$this->viewData = $viewData;
 		$this->layout = 'layout.html';
 	}
 

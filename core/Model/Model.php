@@ -6,7 +6,6 @@
  * @author Zangue <armand.zangue@gmail.com>
  */
 
-namespace \SliMVC;
 
 class Model {
 

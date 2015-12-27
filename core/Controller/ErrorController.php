@@ -6,7 +6,6 @@
  * @author Zangue <armand.zangue@gmail.com>
  */
 
-namespace \SliMVC;
 
 class ErrorController extends Controller {
 
@@ -20,13 +19,13 @@ class ErrorController extends Controller {
 
 	public function error404() {
 
-		$this->renderView($this->name, '404');
+		$this->renderer($this->name, '404');
 
 	}
 
 	public function error500() {
 
-		$this->renderView($this->name, '500');
+		$this->renderer($this->name, '500');
 
 	}
 

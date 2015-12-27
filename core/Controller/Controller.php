@@ -6,7 +6,6 @@
  * @author Zangue <armand.zangue@gmail.com>
  */
 
-namespace \SliMVC;
 
 class Controller {
 
@@ -50,4 +49,10 @@ class Controller {
 	}
 
 
+	public function renderer($dir, $data) {
+
+		$view = new View($this->app, $this->viewData);
+
+		$view->renderView($dir, $data);
+	}
 }

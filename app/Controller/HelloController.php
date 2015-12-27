@@ -1,6 +1,6 @@
 <?php
 
-class HelloController extends BaseController {
+class HelloController extends AppController {
 
 	/**
 	 * Controller name
