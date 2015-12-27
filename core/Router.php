@@ -39,10 +39,16 @@ class Router {
 			$modelClassFile = ROOT . DS . APP_DIR . DS . 'Model' . DS . $modelClass . '.php';
 			$model = NULL;
 
-			if (file_exists($modelClassFile))
+			if (file_exists($modelClassFile)) {
+
+				require $modelClassFile;
 				$model = new $modelClass($this->app);
+			}
 
 			$controllerClass = $action[0] . 'Controller';
+			$controllerClassFile = ROOT . DS . APP_DIR . DS . 'Controller' . DS . $controllerClass . '.php';
+			// TODO: check if file exists. Throw exception if it doesn't
+			require $controllerClassFile;
 			$method = $action[1];
 
 			$controller = new $controllerClass($this->app, $model);

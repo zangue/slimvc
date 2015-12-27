@@ -12,7 +12,7 @@ composer install
 ```
 
 ###Missing features
-* Autoloader: At the moment all the SliMVC classes needs to be manually required
+* Autoloader
 * Namespaces
 
 ###Notes
