@@ -25,9 +25,7 @@ require ROOT . DS . CORE_DIR . DS . 'Controller' . DS . 'ErrorController.php';
 require ROOT . DS . CORE_DIR . DS . 'View' . DS . 'View.php';
 
 require APP_DIR . DS . 'Controller' . DS . 'AppController.php';
-require APP_DIR . DS . 'Controller' . DS . 'HelloController.php';
 require APP_DIR . DS . 'Model' . DS . 'AppModel.php';
-require APP_DIR . DS . 'Model' . DS . 'HelloModel.php';
 
 // Instantiate a new Slim Application
 $app = new Slim([
