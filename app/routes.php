@@ -20,5 +20,5 @@ $app->error(function () use ($router) {
 
 $router->get('/', 'Hello@index');
 
-$router->get('/hello\/', 'Hello@hello');
+$router->get('/hello\/', 'Hello@hello')->name('hello');
 $router->get('/hello/:name/', 'Hello@hello')->name('name');

@@ -56,9 +56,13 @@ class Router {
 			// call controller
 			call_user_func_array([$controller, $method], func_get_args());
 
-			// Render view
-			call_user_func_array([$controller, 'renderer'], [$action[0], $method]);
+			// Render view if no redirection has been set
+			if ($this->app->response->getStatus() !== 302) {
+				call_user_func_array([$controller, 'renderer'], [$action[0], $method]);
+			}
 		})->via($method);
+
+		//return $this->app;
 	}
 
 

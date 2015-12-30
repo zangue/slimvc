@@ -15,6 +15,8 @@ class HelloController extends AppController {
 
 		$msg  = 'HELLO, WORLD!';
 
+		//var_dump($this->app->urlFor('hello'));
+
 		$this->set(compact('msg'));
 	}
 
